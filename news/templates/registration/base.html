@@ -1,19 +1,10 @@
-{% load bootstrap4 %}
-{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
 
-  {% if title %}
-  <title>Moringa Tribune - {{title}}</title>
-  {% else %}
-    <title> Moringa Tribune </title>
-  {% endif %}
-
-  {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
-    {% bootstrap_css %}
+  <title>Accounts</title>
+ 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <!-- Google Fonts -->
@@ -22,19 +13,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-  {% endblock %}
 
 </head>
 <body>
-    {% include "navbar.html" %}
 
-    <div class="container">
-      
-      {% block content %} <h1 class="text-center">News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
+  
 
-    </div>
-
-    {% block scripts %}
     <!-- JQuery -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Bootstrap tooltips -->
@@ -43,7 +27,5 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
         <!-- MDB core JavaScript -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
-     {% bootstrap_javascript %}
-    {% endblock %}
 </body>
 </html>

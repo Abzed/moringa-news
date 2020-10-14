@@ -4,22 +4,54 @@
 
  <div class="container">
 
-   <div class="row">
-     <img src="{{article.article_image.url}}"  class="img-responsive" alt="">
-   </div>
+  <h2 class="text-center" style="text-decoration: underline;">{{ article.title }}</h2>
 
-   <div class="row">
-     <h1 class="text-center">{{article.title}}</h1>
-   </div>
+  <div class="row">
+      
+    <div class="col-sm-2 col-md-2 col-lg-2">
 
-   <div class="row">
-     <p>{{article.post}}</p>
-   </div>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+<!-- Card -->
+<div class="card card-cascade wider reverse">
 
-   <div class="row">
-     <p>Posted {{article.pub_date|timesince}} ago <br> by {{article.editor.first_name}}</p>
-   </div>
+ <!-- Card image -->
+ <div class="view view-cascade overlay">
+   <img class="card-img-top" src="{{ article.article_image.url }}" alt="Article image">
+   <a href="#!">
+     <div class="mask rgba-white-slight"></div>
+   </a>
+ </div>
+
+ <!-- Card content -->
+ <div class="card-body card-body-cascade text-center">
+
+   <!-- Title -->
+   <h4 class="card-title"><strong>{{ article.title }}</strong></h4>
+   <!-- Subtitle -->
+   <h6 class="font-weight-bold indigo-text py-2">Posted by : <strong>{{ article.editor }}</strong></h6>
+   <!-- Text -->
+   <p class="card-text">{% autoescape on %} {{ article.post| safe}} {% endautoescape %}</p>
+
+   <!-- Linkedin -->
+   <a class="px-2 fa-lg li-ic"><i class="far fa-calendar-alt"></i>  Posted {{article.pub_date|timesince}}</a>
+   <!-- Twitter -->
+   <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+   <!-- Dribbble -->
+   <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
 
  </div>
+
+</div>
+<!-- Card -->
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+
+   </div>
+ </div>
+ <br>   
+</div>
+
+ <br>
 
  {% endblock %}

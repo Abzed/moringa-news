@@ -1,26 +1,18 @@
 {%extends 'all-news/base.html'%}
 {% load bootstrap4 %}
+
 {% block content %} 
-{{ block.super}}
 
 <div class="container">
 
-  <form  action="{%url 'newsToday'%}" method="post">
-    {%csrf_token%}
-
-    {% bootstrap_form letterForm layout='inline' %}
-    <input type="submit" value="Subscribe">
-  </form>
-
-  <hr>
-
   <br>
+
+  <h1 style="text-decoration: underline;">TRENDING IN MORINGA SCHOOL...</h1>
 
   <!-- Looping through news   -->
   
-
   <div class="row">
-    {% for news_item in news %}
+    {% for news_item in all_news %}
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
       <!-- Card Dark -->
@@ -28,7 +20,7 @@
 
   <!-- Card image -->
   <div class="view overlay">
-    <img class="card-img-top" src="{{news_item.article_image.url}}" alt="Card image">
+    <img class="card-img-top img-fluid" src="{{news_item.article_image.url}}" alt="Card image">
     <a>
       <div class="mask rgba-white-slight"></div>
     </a>
@@ -52,13 +44,14 @@
   </div>
 
 </div>
- 
+</div>  
+{% empty %}
+<h2 class="text-center" style="text-decoration: underline;">There's No News Items</h2>
+{% endfor %}
 <br>
 </div>
-{% empty %}
-<h2 class="text-center" style="text-decoration: underline;">There's No News Today</h2>
-{% endfor %}
-</div>
+<br>
+ 
 </div>
 
 {% endblock %}

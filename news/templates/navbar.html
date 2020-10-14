@@ -8,7 +8,7 @@
 <body>
 <!--Navbar -->
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark orange lighten-1">
-    <a class="navbar-brand" href="{% url 'newsToday' %}">The Moringa Tribune</a>
+    <a class="navbar-brand" href="{% url 'allNews' %}">The Moringa Tribune</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
       aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -16,32 +16,48 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'newsToday' %}">Latest News
+          <a class="nav-link" href="{% url 'allNews' %}">Home
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/admin">Admin</a>
+          <a class="nav-link" href="{% url 'newsToday' %}">Today News
+          </a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+          <a class="nav-link" href="{%url 'new-article'%}">Create Article</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Account
+          </a>
+          <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
+            <a class="dropdown-item" href="/accounts/password/change">Change Password</a>
+            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="{%url 'new-article'%}">Add Article</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts/login">Login</a>
+        </li>
+        {% endif %}
       </ul>
+      
       <ul class="navbar-nav ml-auto nav-flex-icons">
+        {% if user.is_authenticated %}  
         <form class="form-inline" role="search" action="{% url 'search_results' %}">
           <div class="md-form my-0">
             <input class="form-control mr-sm-2" name="article" type="text" placeholder="Search" aria-label="Search">
           </div>
         </form>
-        <li class="nav-item avatar">
-          <a class="nav-link p-0" href="#">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" class="rounded-circle z-depth-0"
-              alt="avatar image" height="35">
-          </a>
+          {% else %}     
+        <li class="nav-item">
+          <a class="nav-link" href="/accounts/login">Register</a>
         </li>
-      </ul>
-     
-    </div>
-    
+        {% endif %}
+          </ul>
+        </div>
   </nav>
   <!--/.Navbar -->
 </body>
